@@ -10,7 +10,7 @@
 ###$Dinp = "/web/OVO/inputbox";
 ###$Dpgm = "/web/OVO/program";
 ###$Ddat = "/web/OVO/data";######### change these lines ! ##########
-github復活
+
 
 $Dperl = "/usr/bin/perl";			## Please input a directory of perl ##
 $Dhtml = "/home/ryota/Desktop/OVO-AUTO/HTML";		## Please input a directory of html ##
