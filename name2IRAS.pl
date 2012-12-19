@@ -6,7 +6,7 @@
 $Dnon = "/home/ryota/Desktop/OVO-AUTO/future/nonhit";
 $Dkousin = "/home/ryota/Desktop/OVO-AUTO/kousindata";
 $Dprg = "/home/ryota/Desktop/OVO-AUTO/program";
-$Doub = "/home/ryota/Desktop/OVO-AUTO/double";
+$Doub = "/home/ryota/Desktop/OVO-AUTO//future/double";
 
 system("ls $Dkousin/*.txt > $Dprg/sample.txt");
 $band = "\_K\_";
@@ -28,11 +28,10 @@ while ($line = <IN>)  {
 				($real,$two) = split (/,\s/,$pattern);
 				$name =~ s/\\//g;	#+を認識させるための\を消す
 				$real =~ s/ //;		
-				print (OUT "cp $Dkousin/$name$band$ushiro $Dkousin/$real$band$ushiro\n");	#ファイル名変換
+				print (OUT "cp $Dkousin/$name$band$ushiro $Dkousin/$real$band$ushiro\n");		#ファイル名変換
 				print (OUT "mv $Dkousin/$real$band$ushiro \/home\/ryota\/Desktop\/OVO-AUTO\/inputbox\/\n");	#inputboxにcopy
 			}
 			if($no >= 2){
-				#print (OUT "-----------attention!! $name is double booking!-------------\n");	#一致するものが2つ以上ある場合、警告文
 				print (OUT "cp $Dkousin/$name$band$ushiro $Doub/$name$band$ushiro\n");
 			}	
 		}
@@ -48,5 +47,5 @@ close(OUT);
 close(IN);
 system("sh /home/ryota/Desktop/OVO-AUTO/program/furiwake.sh");
 #system("rm $Dprg/sample.txt");
-#system("rm /home/ryota/Desktop/OVO-AUTO/program/furiwake.sh");
+system("rm /home/ryota/Desktop/OVO-AUTO/program/furiwake.sh");
 system("rm $Dkousin/*.txt");

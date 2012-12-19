@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 $Dtop = "/home/ryota/Desktop/OVO-AUTO/HTML";
 
 ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
@@ -42,7 +42,7 @@ I hope you will create so many many study result from OVO.<br>
 	</table></p>
 	<form><font color=red>~ what's New? ~</font><br>
 	<form size=\"1\">
-		$year/$mon/$mday add data of H2O maser @ $year/$mon/$mday
+		<option>$year/$mon/$mday add data of H2O maser @ $year/$mon/$mday
 	</form></form>
 
 <br><br><hr size=\"1\">

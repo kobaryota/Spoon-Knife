@@ -1,0 +1,8 @@
+/home/ryota/Desktop/OVO-AUTO/kousindata/AFGL490_K_121011IRK.txt
+/home/ryota/Desktop/OVO-AUTO/kousindata/AH-Sco_K_121010IRK.txt
+/home/ryota/Desktop/OVO-AUTO/kousindata/FV-Boo_K_120809IRK.txt
+/home/ryota/Desktop/OVO-AUTO/kousindata/FX-Mon_K_120609IRK.txt
+/home/ryota/Desktop/OVO-AUTO/kousindata/IRAS05345+3157_K_120604IRK.txt
+/home/ryota/Desktop/OVO-AUTO/kousindata/IRAS05554+2013_K_120604IRK.txt
+/home/ryota/Desktop/OVO-AUTO/kousindata/NML-Cyg_K_120804IRK.txt
+/home/ryota/Desktop/OVO-AUTO/kousindata/Ori_KL_K_120816IRK.txt

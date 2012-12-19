@@ -1,44 +1,42 @@
 #############################################################
-## H2Oï¿½á¡¼ï¿½ï¿½ï¿½ï¿½ï¿½Î¥Ç¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-## OVO/inputboxï¿½Ë¤ï¿½ï¿½ï¿½txtï¿½ï¿½newstarï¿½Î½ï¿½ï¿½ï¿½txt(headerï¿½ï¿½)ï¿½Ë¤ï¿½
-## ï¿½ï¿½Å·ï¿½Î¤ï¿½dirï¿½Ë°ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½gnuplotï¿½Ç¥é¥¤ï¿½È¥ï¿½ï¿½ï¿½ï¿½Ö¤È¥ï¿½ï¿½Ú¥ï¿½ï¿½È¥ï¿½ï¿½ï¿½
-## ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¡£ï¿½Þ¤ï¿½ï¿½ê¥¹ï¿½È¸ï¿½ï¿½ï¿½ï¿½Î¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½
-## cronï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åªï¿½ï¿½ï¿½ï¿½ï¿½é¤»ï¿½ë¤³ï¿½È¤ï¿½ï¿½ï¿½ï¿½ê¡£
+## H2O¥á¡¼¥¶¡¼¤Î¥Ç¡¼¥¿¹¹¿·¥×¥í¥°¥é¥à
+## OVO/inputbox¤Ë¤¢¤ëtxt¡Ênewstar¤Î½ÐÎÏtxt(headerÉÕ)¡Ë¤ò
+## ³ÆÅ·ÂÎ¤Îdir¤Ë°ÜÆ°¤µ¤»¡¢gnuplot¤Ç¥é¥¤¥È¥«¡¼¥Ö¤È¥¹¥Ú¥¯¥È¥ë¤ò
+## ºîÀ®¤¹¤ë¡£¤Þ¤¿¥ê¥¹¥È¸¡º÷¤Î¹¹¿·¤â¹Ô¤¦¡£
+## cronÅù¤ÇÄê´üÅª¤ËÁö¤é¤»¤ë¤³¤È¤òÁÛÄê¡£
 ## 1st version 2007/5/10 last update 2008/10/22 by K.Ueda
 #############################################################
-##dirï¿½ï¿½Â¤ï¿½ï¿½Ê£ï¿½ï¿½ï¿½Ê¤Î¤Ç¥Õ¥ï¿½ï¿½Ñ¥ï¿½ï¿½ï¿½ï¿½È¤ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ñ¤ï¿½ï¿½è¤¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+##dir¹½Â¤¤¬Ê£»¨¤Ê¤Î¤Ç¥Õ¥ë¥Ñ¥¹¤ò»È¤¦¤¬¡¢Ã»¤¯ºÑ¤à¤è¤¦¤ËÄêµÁ
 ###$Dinp = "/web/OVO/inputbox";
 ###$Dpgm = "/web/OVO/program";
 ###$Ddat = "/web/OVO/data";######### change these lines ! ##########
 
 
-$Dperl = "/usr/bin/perl";			## Please input a directory of perl ##
+$Dperl = "/usr/local/bin/perl";			## Please input a directory of perl ##
 $Dhtml = "/home/ryota/Desktop/OVO-AUTO/HTML";		## Please input a directory of html ##
 $Dinp = "/home/ryota/Desktop/OVO-AUTO/inputbox";	## Please input a directory of inputbox ##
 $Dpgm = "/home/ryota/Desktop/OVO-AUTO/program";	## Please input a directory of program ##
-$Ddat = "/home/ryota/Desktop/OVO-AUTO/data";		## Please input a directory of data ##
+$Ddat = "/home/ryota/Desktop/OVO-AUTO/HTML/data";		## Please input a directory of data ##
 
-##inputboxï¿½ï¿½ï¿½ï¿½txtï¿½ï¿½ï¿½É¤ß¹ï¿½ï¿½ï¿½
+##inputboxÆâ¤Îtxt¤òÆÉ¤ß¹þ¤à
 system("ls $Dinp/*IRK.txt > $Dpgm/newdata.lst");
 open(IN,"$Dpgm/newdata.lst");
 @file = <IN>;
 chomp @file;
 close(IN);
 
-##inputboxï¿½ï¿½ï¿½ï¿½txtï¿½ï¿½ï¿½ï¿½Å·ï¿½Î¤ï¿½dirï¿½Ë°ï¿½Æ°
+##inputboxÆâ¤Îtxt¤ò³ÆÅ·ÂÎ¤Îdir¤Ë°ÜÆ°
 foreach $files (@file){
-###	$file = substr($file, 18);#########ï¿½ï¿½change this line ! #########
-###	$file = substr($file, 30);
 	($maepass,$file) = split (/\/inputbox\//, $files);
 	($name,$ushiro) = split (/\_K\_/, $file);
 	system("mkdir -p $Ddat/$name/H2O/");
 	system("mv $Dinp/$file $Ddat/$name/H2O/");
 	
-##ï¿½é¥¤ï¿½È¥ï¿½ï¿½ï¿½ï¿½Öºï¿½ï¿½ï¿½
-##ï¿½ï¿½txtï¿½Îºï¿½ï¿½ç¶¯ï¿½Ù¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¤ï¿½ï¿½ï¿½max.plï¿½ï¿½È´ï¿½ï¿½ï¿½Ð¤ï¿½ï¿½ï¿½
-##sortï¿½Ç»ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½Â¤Ù¡ï¿½plotï¿½Ñ¤ï¿½*sort.pltï¿½ï¿½ï¿½ï¿½ï¿½ë¡£
-##ï¿½Þ¤ï¿½ï¿½Æ¥×¥ï¿½ï¿½Ã¥È¤ï¿½SNRï¿½Í¤ï¿½Åºï¿½ï¿½ï¿½ë¤¿ï¿½ï¿½ï¿½ï¿½*label.pltï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-##ï¿½ï¿½SNRï¿½Ï¤ï¿½ï¿½ï¿½ï¿½ï¿½r.m.s.ï¿½ò¥¨¥é¡¼ï¿½Ð¡ï¿½ï¿½Ë¡ï¿½
+##¥é¥¤¥È¥«¡¼¥ÖºîÀ®
+##³Ætxt¤ÎºÇÂç¶¯ÅÙ¤ÎÅÀ¤ò¸«ÉÕ¤±¡¢max.pl¤ÇÈ´¤­½Ð¤·¡¢
+##sort¤Ç»þ´Ö½ç¤ËÊÂ¤Ù¡¢plotÍÑ¤Î*sort.plt¤òºî¤ë¡£
+##¤Þ¤¿³Æ¥×¥í¥Ã¥È¤ËSNRÃÍ¤òÅº¤¨¤ë¤¿¤á¤Î*label.plt¤âºîÀ®¡£
+##¢¬SNR¤Ï¤ä¤á¤Ær.m.s.¤ò¥¨¥é¡¼¥Ð¡¼¤Ë¡£
 	system("ls $Ddat/$name/H2O/*IRK.txt > $name-junbi.txt");
 	open(IN1,"$name-junbi.txt");
 	@data = <IN1>;
@@ -49,20 +47,20 @@ foreach $files (@file){
 		print(OUT "$Dperl $Dpgm/max.pl $data\n");
 		close(OUT);
 	}
-	system("sh $name-get.sh > $name-plot.txt");
-	system("sort $name-plot.txt > $Ddat/$name/H2O/$name-sort.plt");
+	system("sh $name-get.sh > $name-plot.txt");				#ºÇÂçÃÍ¤òÉ½¼¨
+	system("sort $name-plot.txt > $Ddat/$name/H2O/$name-sort.plt");	#º£¤Þ¤Ç´ÑÂ¬¤·¤¿¥Ç¡¼¥¿¤Î¥½¡¼¥È¤ò¹Ô¤¦
 	system("rm -f $name-*");
 	#system("$Dperl $Dpgm/makelabel.pl $Ddat/$name/H2O/$name-sort.plt");
 	#system("mv label.plt $Ddat/$name/H2O/$name-label.plt");
-##gnuplot.plï¿½ï¿½plotï¿½ï¿½ï¿½ï¿½ï¿½ë¤¿ï¿½ï¿½ï¿½ï¿½shï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¹Ô¡ï¿½
+##gnuplot.pl¤Çplot¤µ¤»¤ë¤¿¤á¤Îsh¤òºîÀ®¡¢¼Â¹Ô¡£
 	open(OUT0,">> plot.sh");
 	print(OUT0 "$Dperl $Dpgm/LCgnuplotH2O.pl $Ddat/$name/H2O/$name-sort.plt\n");
 	close(OUT0);
 	system("sh plot.sh");
 #	system("rm -f plot.sh");
 	
-##ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¥ï¿½ï¿½È¥ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¡£
-##ï¿½Å¤ï¿½ï¿½Ç¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É²Ã¤ï¿½ï¿½Æ¤ï¿½ï¿½Ð±ï¿½ï¿½Ç¤ï¿½ï¿½ï¿½ï¿½è¤¦ï¿½ï¿½ï¿½Ñ¹ï¿½
+##ºÇ¿·¡õÁ´¥¹¥Ú¥¯¥È¥ë¿Þ¤òºîÀ®¤¹¤ë¡£
+##¸Å¤¤¥Ç¡¼¥¿¤òÄÉ²Ã¤·¤Æ¤âÂÐ±þ¤Ç¤­¤ë¤è¤¦¤ËÊÑ¹¹
 	#system("ls $Ddat/$name/H2O/$name*IRK.txt | tail -1 > $name-new.txt");
 	#open(IN2,"$name-new.txt");
 	#$newtxt = <IN2>;

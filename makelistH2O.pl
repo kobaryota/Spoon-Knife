@@ -1,41 +1,34 @@
 #!/usr/bin/perl
 
-$Ddat = "/home/ryota/Desktop/OVO-AUTO/data";		## Please input a directory of data ##
+$Ddat = "/home/ryota/Desktop/OVO-AUTO/HTML/data";		## Please input a directory of data ##
 $Dlist = "/home/ryota/Desktop/OVO-AUTO/list";		## Please input a directory of list ##
-$Dcgi = "/home/ryota/Desktop/OVO-AUTO/CGI";	## Please input a directory of cgi ##
+$Dcgi = "http://127.0.0.1/cgi-bin";	## Please input a directory of cgi ##
 
 print "<html>\n";
 print "<head>\n";
 print "<title>H2O maser Observation @ IRK</title>\n</head>\n";
 print "<body>\n";
 print "<h2>VERA SingleDish Observation Current Result<br>H2O maser @ IRIKI station</h2>\n";
-#open(IN,"/web/OVO/list/H2OmaserList.csv");
-###open(IN,"/web/OVO/list/SourceList090711.txt");##########←change this line######
+
 open(IN,"$Dlist/SourceList.txt");
 @basic = <IN>;
 chomp @basic;
 close(IN);
 
-print "<table>\n";
+print "<table border=\"7\" cellspacing=\"1\" cellpadding=\"5\" align=\"center\">\n";
 print "<div align=right><font color=red>*</font>Detect:Yes!>=5&#963; No<5&#963;</div>\n";
-print "<tr><td>name1</td><td>name2</td><td>R.A.<br>H</td><td><br>M</td><td>(J2000)<br>S</td><td>Dec.<br>D</td><td><br>M</td><td>(J2000)<br>S</td><td>Current<br>Obs. Date</td><td><br>Flux(Jy)</td><td><br>Detect(&#963;)<font color=red>*</font></td></tr>\n";
+print "<tr><td bgcolor=\"pink\" align=\"center\">name1</td><td bgcolor=\"pink\" align=\"center\">name2</td><td bgcolor=\"pink\" align=\"center\" width=\"50\">R.A.<br>H</td><td bgcolor=\"pink\" align=\"center\"><br>M</td><td bgcolor=\"pink\" align=\"center\">(J2000)<br>S</td><td bgcolor=\"pink\" align=\"center\">Dec.<br>D</td><td bgcolor=\"pink\" align=\"center\"><br>M</td><td bgcolor=\"pink\" align=\"center\">(J2000)<br>S</td><td bgcolor=\"pink\" align=\"center\">Current<br>Obs. Date</td><td bgcolor=\"pink\" align=\"center\"><br>Flux(Jy)</td><td bgcolor=\"pink\" align=\"center\"><br>Detect(&#963;)<font color=red>*</font></td></tr>\n";
 foreach $basic (@basic){
 	($b1,$b2,$b3,$b4,$b5,$b6,$b7,$b8,$b9) = split (/\s+/, $basic);
-#	$b25 = $b2;
 	$b25 = $b1;
 	if($b25 =~ /IRAS/){
-#		$b25 =~ s/\+/\\\+/;
 		substr($b25, 4, 0) = " ";
 	}
-#	if(-s"/home/ovo/OVO/data/$b25"){
-#	$b8 = $b7 * $b8;
-#	print "<tr><td><a href=\"../../cgi-bin/OVO/makepage2.cgi?object=$b25\">$b2</a></td><td>$b3</td><td>$b4</td><td>$b5</td><td>$b6</td><td>$b7</td><td>$b8</td><td>$b9</td>";
-###		print "<tr><td><a href=\"../../cgi-bin/OVO/makepage2.cgi?object=$b25\">$b1</a></td><td>$b2</td><td>$b3</td><td>$b4</td><td>$b5</td><td>$b6</td><td>$b7</td><td>$b8</td>";##########←change this line######
+
 		print "<tr><td><a href=\"$Dcgi/makepage2.cgi?object=$b25\">$b1</a></td><td>$b2</td><td>$b3</td><td>$b4</td><td>$b5</td><td>$b6</td><td>$b7</td><td>$b8</td>";
-#	system("tail -1 /web/OVO/data/$b2/H2O/$b2-sort.plt > $b2-newobs.txt");
-###		system("tail -1 /web/OVO/data/$b1/H2O/$b1-sort.plt > $b1-newobs.txt");##########←change this line######
+
+
 system("tail -1 $Ddat/$b1/H2O/$b1-sort.plt > $b1-newobs.txt");
-#	open(IN2,"$b2-newobs.txt");
 		open(IN2,"$b1-newobs.txt");
 		@obs = <IN2>;
 		chomp @obs;
@@ -54,7 +47,6 @@ system("tail -1 $Ddat/$b1/H2O/$b1-sort.plt > $b1-newobs.txt");
 			}
 		}
 		print "</tr>\n";
-#	}
 }
 print "</table>\n";
 system("rm -f *newobs.txt\n");
