@@ -3,19 +3,18 @@
 ###該当無しの場合は、nohitに移動されるので確認し、変換名一覧を充実させる
 #!/usr/bin/perl
 
-$Dnon = "/home/ryota/Desktop/OVO-AUTO/future/nonhit";
 $Dkousin = "/home/ryota/Desktop/OVO-AUTO/kousindata";
 $Dprg = "/home/ryota/Desktop/OVO-AUTO/program";
-$Doub = "/home/ryota/Desktop/OVO-AUTO//future/double";
+$Doub = "/home/ryota/Desktop/OVO-AUTO/future/double";
+$Dinp = "/home/ryota/Desktop/OVO-AUTO/inputbox";
 
-system("ls $Dkousin/*.txt > $Dprg/sample.txt");
+system("ls $Dkousin/ > $Dprg/sample.txt");
 $band = "\_K\_";
 $no = 0;
 open(IN,"$Dprg/sample.txt");					#解析結果txtの一覧を読み込む。
 while ($line = <IN>)  {
 	chomp $line;
-	($kou,$data) = split (/\/kousindata\//, $line);
-	($name,$ushiro) = split (/\_K\_/, $data);	#_K_の前後で分ける。
+	($name,$ushiro) = split (/\_K\_/, $line);	#_K_の前後で分ける。
 	$name =~ s/\+/\\\+/c;				#+が上手く認識されないため\を付ける。
 	$ushiro =~ s/\*//;				#ファイル名の最後に*が付いている場合は消す。
 	open(OUT,">> /home/ryota/Desktop/OVO-AUTO/program/furiwake.sh");
@@ -29,7 +28,7 @@ while ($line = <IN>)  {
 				$name =~ s/\\//g;	#+を認識させるための\を消す
 				$real =~ s/ //;		
 				print (OUT "cp $Dkousin/$name$band$ushiro $Dkousin/$real$band$ushiro\n");		#ファイル名変換
-				print (OUT "mv $Dkousin/$real$band$ushiro \/home\/ryota\/Desktop\/OVO-AUTO\/inputbox\/\n");	#inputboxにcopy
+				print (OUT "mv $Dkousin/$real$band$ushiro $Dinp\n");	#inputboxにcopy
 			}
 			if($no >= 2){
 				print (OUT "cp $Dkousin/$name$band$ushiro $Doub/$name$band$ushiro\n");
@@ -39,7 +38,7 @@ while ($line = <IN>)  {
 	close(IN2);
 	if($no == 0){				#一致するものが無い場合
 		$name =~ s/\\//g;
-		print (OUT "mv $Dkousin/$name$band$ushiro $Dnon\n");	#nohitというdirに転送
+		print (OUT "mv $Dkousin/$name$band$ushiro $Dinp\n");	
 	}
 	$no = 0;
 }

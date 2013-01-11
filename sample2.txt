@@ -1,8 +1,13 @@
-/home/ryota/Desktop/OVO-AUTO/inputbox/AFGL490_K_121011IRK.txt
 /home/ryota/Desktop/OVO-AUTO/inputbox/AH_Sco_K_121010IRK.txt
 /home/ryota/Desktop/OVO-AUTO/inputbox/FX_Mon_K_120609IRK.txt
 /home/ryota/Desktop/OVO-AUTO/inputbox/IRAS05345+3157_K_120604IRK.txt
+/home/ryota/Desktop/OVO-AUTO/inputbox/IRAS05524+0723_K_120820IRK.txt
 /home/ryota/Desktop/OVO-AUTO/inputbox/IRAS05554+2013_K_120604IRK.txt
 /home/ryota/Desktop/OVO-AUTO/inputbox/IRAS15060+0947_K_120809IRK.txt
+/home/ryota/Desktop/OVO-AUTO/inputbox/IRAS15255+1944_K_120809IRK.txt
+/home/ryota/Desktop/OVO-AUTO/inputbox/IRC+10234_K_120809IRK.txt
 /home/ryota/Desktop/OVO-AUTO/inputbox/NML_Cyg_K_120804IRK.txt
 /home/ryota/Desktop/OVO-AUTO/inputbox/Orion_IRc2_K_120816IRK.txt
+/home/ryota/Desktop/OVO-AUTO/inputbox/W49N_K_120808IRK.txt
+/home/ryota/Desktop/OVO-AUTO/inputbox/XZ_Sex_K_120809IRK.txt
+/home/ryota/Desktop/OVO-AUTO/inputbox/XZ_Sex_K_120826IRK.txt

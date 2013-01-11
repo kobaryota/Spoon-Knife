@@ -1,8 +1,8 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 
 $Ddat = "/home/ryota/Desktop/OVO-AUTO/HTML/data";		## Please input a directory of data ##
 $Dlist = "/home/ryota/Desktop/OVO-AUTO/list";		## Please input a directory of list ##
-$Dcgi = "http://127.0.0.1/cgi-bin";	## Please input a directory of cgi ##
+$Dcgi = "http://192.168.24.53/cgi-bin";	## Please input a directory of cgi ##
 
 print "<html>\n";
 print "<head>\n";
@@ -10,7 +10,7 @@ print "<title>H2O maser Observation @ IRK</title>\n</head>\n";
 print "<body>\n";
 print "<h2>VERA SingleDish Observation Current Result<br>H2O maser @ IRIKI station</h2>\n";
 
-open(IN,"$Dlist/SourceList.txt");
+open(IN,"$Dlist/sort-SourceList.txt");
 @basic = <IN>;
 chomp @basic;
 close(IN);

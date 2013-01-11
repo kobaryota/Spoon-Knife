@@ -1,4 +1,4 @@
-$Ddat = "/home/ryota/Desktop/OVO-AUTO/data";			
+$Ddat = "/home/ryota/Desktop/OVO-AUTO/HTML/data";			
 
 open(IN0,"@ARGV[0]");
 $file = @ARGV[0];

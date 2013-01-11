@@ -1,7 +1,7 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 
 #$Dgnu = "/usr/local/bin/gnuplot";			## Please input a directory of gnuplot ##
-$Ddat = "/home/ryota/Desktop/OVO-AUTO/data";	 ## Please input a directory of data ##
+$Ddat = "/home/ryota/Desktop/OVO-AUTO/HTML/data";	 ## Please input a directory of data ##
 
 open(IN0,"@ARGV[0]");
 $filesp = @ARGV[0];

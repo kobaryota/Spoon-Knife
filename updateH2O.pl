@@ -37,55 +37,69 @@ foreach $files (@file){
 ##sortで時間順に並べ、plot用の*sort.pltを作る。
 ##また各プロットにSNR値を添えるための*label.pltも作成。
 ##↑SNRはやめてr.m.s.をエラーバーに。
-	system("ls $Ddat/$name/H2O/*IRK.txt > $name-junbi.txt");
-	open(IN1,"$name-junbi.txt");
-	@data = <IN1>;
-	chomp @data;
-	close(IN1);
-	foreach $data (@data){
-		open(OUT,">> $name-get.sh");
-		print(OUT "$Dperl $Dpgm/max.pl $data\n");
-		close(OUT);
-	}
-	system("sh $name-get.sh > $name-plot.txt");				#最大値を表示
-	system("sort $name-plot.txt > $Ddat/$name/H2O/$name-sort.plt");	#今まで観測したデータのソートを行う
-	system("rm -f $name-*");
-	#system("$Dperl $Dpgm/makelabel.pl $Ddat/$name/H2O/$name-sort.plt");
-	#system("mv label.plt $Ddat/$name/H2O/$name-label.plt");
-##gnuplot.plでplotさせるためのshを作成、実行。
-	open(OUT0,">> plot.sh");
-	print(OUT0 "$Dperl $Dpgm/LCgnuplotH2O.pl $Ddat/$name/H2O/$name-sort.plt\n");
-	close(OUT0);
-	system("sh plot.sh");
-#	system("rm -f plot.sh");
-	
-##最新＆全スペクトル図を作成する。
-##古いデータを追加しても対応できるように変更
-	#system("ls $Ddat/$name/H2O/$name*IRK.txt | tail -1 > $name-new.txt");
-	#open(IN2,"$name-new.txt");
-	#$newtxt = <IN2>;
-	#chomp $newtxt;
-	#($getday) = split (/IRK/, $newtxt);
-	#($pwd,$day) = split (/\_K\_/, $getday);
-	#close(IN2);
-	#system("$Dperl $Dpgm/txt2sp.pl $newtxt > $Ddat/$name/H2O/$name-newsp.plt");
-	$filesp = $file;
-	$filesp =~ s/txt/plt/;
-	system("$Dperl $Dpgm/txt2sp.pl $Ddat/$name/H2O/$file > $Ddat/$name/H2O/$filesp");
-	open(OUT2,">> plot2.sh");
-	print(OUT2 "$Dperl $Dpgm/SPgnuplotH2O.pl $Ddat/$name/H2O/$filesp\n");
-	close(OUT2);
-	system("sh plot2.sh");
-	system("ls $Ddat/$name/H2O/$name\_20*.png | tail -1 > $name-new.txt");
-	open(IN2,"$name-new.txt");
-	$newpng = <IN2>;
-	chomp $newpng;
-	close(IN2);
-	system("cp $newpng $Ddat/$name/H2O/$name-sp.png");
-	system("ls -r $Ddat/$name/H2O/$name\_20*.png > $Ddat/$name/H2O/$name\_allsp.lst");
-	system("ls -r $Ddat/$name/H2O/$name\_K*IRK.txt > $Ddat/$name/H2O/$name\_alltxt.lst");
-	system("rm -f plot2.sh");
-	system("rm -f $name-new.txt");
+system("ls $Ddat/$name/H2O/*IRK.txt > $name-junbi.txt");
+        open(IN1,"$name-junbi.txt");
+        @data = <IN1>;
+        chomp @data;
+        close(IN1);
+        foreach $data (@data){
+                open(OUT,">> $name-get.sh");
+                print(OUT "$Dperl $Dpgm/max.pl $data\n");
+                close(OUT);
+        }
+        system("sh $name-get.sh > $name-plot.txt");
+        system("sort $name-plot.txt > $Ddat/$name/H2O/$name-sort.plt");
+        system("rm -f $name-*");
+        #system("$Dperl $Dpgm/makelabel.pl $Ddat/$name/H2O/$name-sort.plt");
+        #system("mv label.plt $Ddat/$name/H2O/$name-label.plt");
+
+        open(OUT0,">> plot.sh");
+        print(OUT0 "$Dperl $Dpgm/LCgnuplotH2O.pl $Ddat/$name/H2O/$name-sort.plt\n");
+        close(OUT0);
+        system("sh plot.sh");
+        system("rm -f plot.sh");
+
+        #system("ls $Ddat/$name/H2O/$name*IRK.txt | tail -1 > $name-new.txt");
+        #open(IN2,"$name-new.txt");
+        #$newtxt = <IN2>;
+        #chomp $newtxt;
+        #($getday) = split (/IRK/, $newtxt);
+        #($pwd,$day) = split (/\_K\_/, $getday);
+        #close(IN2);
+        #system("$Dperl $Dpgm/txt2sp.pl $newtxt > $Ddat/$name/H2O/$name-newsp.plt");
+        $filesp = $file;
+        $filesp =~ s/txt/plt/;
+        system("$Dperl $Dpgm/txt2sp.pl $Ddat/$name/H2O/$file > $Ddat/$name/H2O/$filesp");
+        open(OUT2,">> plot2.sh");
+        print(OUT2 "$Dperl $Dpgm/SPgnuplotH2O.pl $Ddat/$name/H2O/$filesp\n");
+        close(OUT2);
+        system("sh plot2.sh");
+#       system("ls $Ddat/$name/H2O/$name\_20*.png | tail -1 > $name-new.txt");
+#       open(IN12,"$name-new.txt");
+#       $newpng = <IN12>;
+#       chomp $newpng;
+#       close(IN12);
+#       system("cp $newpng $Ddat/$name/H2O/$name-sp.png");
+}
+#
+open(IN,"$Dpgm/newdata.lst");
+@file = <IN>;
+chomp @file;
+close(IN);
+foreach $files (@file){
+        ($maepass,$file) = split (/\/inputbox\//, $files);
+        ($name,$ushiro) = split (/\_K\_/, $file);
+        system("ls $Ddat/$name/H2O/$name\_20*.png | tail -1 > $name-new.txt");
+        open(IN12,"$name-new.txt");
+        $newpng = <IN12>;
+        chomp $newpng;
+        close(IN12);
+        system("cp $newpng $Ddat/$name/H2O/$name-sp.png");
+        system("ls -r $Ddat/$name/H2O/$name\_20*.png > $Ddat/$name/H2O/$name\_allsp.lst");
+        system("ls -r $Ddat/$name/H2O/$name\_K*IRK.txt > $Ddat/$name/H2O/$name\_alltxt.lst");
+        system("rm -f plot2.sh");
+        system("rm -f $name-new.txt");
 }
 ###system("$Dperl $Dpgm/makelistH2O.pl > /web/OVO/H2Omaser.html");####change this line !###
 system("$Dperl $Dpgm/makelistH2O.pl > $Dhtml/H2Omaser.html");
+
